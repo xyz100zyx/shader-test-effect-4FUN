@@ -14,6 +14,10 @@ import {
   SphereGeometry,
   WebGLRenderer,
 } from "three";
+import { initControls } from "./components/controls";
+import { initMercedes } from "./components/mercedes";
+import { initDistMercedes } from "./components/dist-mercedes";
+import { initHalfoneMercedes } from "./components/halftone-mercedes";
 
 async function bootstrap() {
   const scene = new Scene();
@@ -62,6 +66,11 @@ async function bootstrap() {
 
   let rotCoefficient = 0;
   const tick = new Tick();
+
+  initControls(camera, renderer);
+  initMercedes(scene);
+  initDistMercedes(scene);
+  initHalfoneMercedes(scene);
 
   tick.addTickCallback(() => {
     rotCoefficient += 0.02;
