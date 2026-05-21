@@ -1,16 +1,19 @@
 import { GL_MODEL_CACHE_KEYS } from "../../shared/constants";
 import { GLModelLoader } from "../../shared/gl-model-loader/gl-model-loader";
-import { getHalftoneShaderMaterial } from "./materials/shader-material";
+import { getHalftoneShaderMaterial } from "./materials";
 import { Tick } from "../../shared/tick";
+import { consolePrinter } from "../../shared/console-printer";
 
 export const initHalfoneMercedes = async (scene) => {
   const glmLoader = new GLModelLoader(GL_MODEL_CACHE_KEYS.MERCEDES);
 
   const glmModelLoadResult = await glmLoader.loadGLModel(
     "gl-models/mercedes/scene.gltf",
-    () => {},
+    () => {
+      consolePrinter.printDevLog("load gl model for initHalfoneMercedes");
+    },
     (e) => {
-      console.log("error", e);
+      consolePrinter.printError(e, JSON.stringify);
     },
   );
 

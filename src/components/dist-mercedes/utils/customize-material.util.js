@@ -36,8 +36,6 @@ export const customizeMaterial = (child, setUniforms) => {
       "#include <common>",
       fragmentCommonShader,
     );
-
-    // console.log("materialSrc.vertexShader", materialSrc.fragmentShader);
   };
 
   material.needsUpdate = true;

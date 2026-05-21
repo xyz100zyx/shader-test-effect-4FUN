@@ -1,3 +1,4 @@
+import { consolePrinter } from "../../shared/console-printer";
 import { GL_MODEL_CACHE_KEYS } from "../../shared/constants";
 import { GLModelLoader } from "../../shared/gl-model-loader/gl-model-loader";
 
@@ -6,10 +7,10 @@ export const initMercedes = async (scene) => {
   const model = await glModelLoader.loadGLModel(
     "gl-models/mercedes/scene.gltf",
     () => {
-      console.log("success");
+      consolePrinter.printDevLog("load gl model for initMercedes");
     },
     (error) => {
-      console.log("error", error);
+      consolePrinter.printError(error, JSON.stringify);
     },
   );
 
